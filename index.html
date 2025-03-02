@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeekCasino - En İyi Online Casinolar</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-joystick me-2"></i>SeekCasino
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#top-casinos">En İyi Casinolar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#casino-search">Casino Ara</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Hakkımızda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">En İyi Online Casino Deneyimi</h1>
+                    <p class="lead mb-4">Güvenilir casinolar, özel bonuslar ve detaylı incelemeler için doğru yerdesiniz.</p>
+                    <a href="#casino-search" class="btn btn-primary btn-lg">Casino Ara</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter and Search Section -->
+    <section id="casino-search" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Casino Ara</h2>
+            <div class="row g-3">
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form id="search-form">
+                                <div class="row g-3">
+                                    <div class="col-lg-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                            <input type="text" id="searchTerm" class="form-control" placeholder="Casino adı ara...">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6">
+                                        <select id="licenceFilter" class="form-select">
+                                            <option value="">Lisans Seç</option>
+                                            <!-- Will be populated from API -->
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6">
+                                        <select id="providerFilter" class="form-select">
+                                            <option value="">Sağlayıcı Seç</option>
+                                            <!-- Will be populated from API -->
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6">
+                                        <select id="gameTypeFilter" class="form-select">
+                                            <option value="">Oyun Türü Seç</option>
+                                            <!-- Will be populated from API -->
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6">
+                                        <button type="submit" class="btn btn-primary w-100">Filtrele</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casino Listing Section -->
+    <section id="casino-listing" class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="m-0">Casinolar</h2>
+                <div class="d-flex align-items-center">
+                    <span class="me-2">Sırala:</span>
+                    <select id="sortOptions" class="form-select form-select-sm" style="width: auto;">
+                        <option value="point-desc">Puan (Yüksekten Düşüğe)</option>
+                        <option value="point-asc">Puan (Düşükten Yükseğe)</option>
+                        <option value="name-asc">İsim (A-Z)</option>
+                        <option value="name-desc">İsim (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Pagination Info -->
+            <div id="pagination-info" class="mb-3 text-muted small">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <!-- Casino Cards Container -->
+            <div id="casino-container" class="row g-4">
+                <!-- Casino cards will be loaded here via JavaScript -->
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Yükleniyor...</span>
+                    </div>
+                    <p class="mt-2">Casinolar yükleniyor...</p>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <nav aria-label="Casino Sayfaları" class="mt-4">
+                <ul id="pagination" class="pagination justify-content-center">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Hakkımızda</h2>
+                    <p>SeekCasino, güvenilir ve kaliteli online casino seçeneklerini bulmak isteyen oyunseverler için oluşturulmuş bir platformdur. Amacımız, kullanıcılarımıza doğru ve güncel bilgiler sunarak en iyi casino deneyimini yaşamalarını sağlamaktır.</p>
+                    <p>Platformumuzda casinolar için detaylı incelemeler, kullanıcı yorumları, bonuslar ve promosyonlar hakkında bilgiler bulabilirsiniz. Ayrıca, kolay filtreleme ve arama özellikleriyle, tercihlerinize en uygun casinoyu kolayca bulabilirsiniz.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Neden Biz?</h2>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light"><i class="bi bi-check-circle-fill text-success me-2"></i> Detaylı ve tarafsız casino incelemeleri</li>
+                        <li class="list-group-item bg-light"><i class="bi bi-check-circle-fill text-success me-2"></i> Güncel bonus ve promosyon bilgileri</li>
+                        <li class="list-group-item bg-light"><i class="bi bi-check-circle-fill text-success me-2"></i> Kullanıcı değerlendirmeleri ve puanlamaları</li>
+                        <li class="list-group-item bg-light"><i class="bi bi-check-circle-fill text-success me-2"></i> Gelişmiş arama ve filtreleme özellikleri</li>
+                        <li class="list-group-item bg-light"><i class="bi bi-check-circle-fill text-success me-2"></i> Güncel ve düzenli içerik güncellemeleri</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">SeekCasino</h5>
+                    <p>En iyi casino deneyimi için güvenilir rehberiniz.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Anasayfa</a></li>
+                        <li><a href="#top-casinos" class="text-light text-decoration-none">En İyi Casinolar</a></li>
+                        <li><a href="#casino-search" class="text-light text-decoration-none">Casino Ara</a></li>
+                        <li><a href="#about" class="text-light text-decoration-none">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">İletişim</h5>
+                    <p><i class="bi bi-envelope me-2"></i> info@seekcasino.io</p>
+                    <p><i class="bi bi-telephone me-2"></i> +90 (123) 456 7890</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> İstanbul, Türkiye</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 SeekCasino. Tüm hakları saklıdır.</p>
+                <p class="small">18 yaş ve üzeri için tasarlanmıştır. Sorumlu oyun oynayın.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Casino Detail Modal -->
+    <div class="modal fade" id="casinoDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Casino Detayı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body" id="casinoDetailContent">
+                    <!-- Will be filled via JavaScript -->
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Yükleniyor...</span>
+                        </div>
+                        <p class="mt-2">Casino detayları yükleniyor...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <a href="#" class="btn btn-primary" id="visitCasinoButton" target="_blank">Siteyi Ziyaret Et</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Casino Card -->
+    <template id="casino-card-template">
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 casino-card">
+                <div class="casino-rating">
+                    <span class="badge bg-primary">0.0</span>
+                </div>
+                <div class="text-center pt-4">
+                    <img src="" alt="Casino Logo" class="casino-logo">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3"></h5>
+                    <p class="card-text description"></p>
+                    <div class="mb-3">
+                        <p class="mb-1 fw-bold">Lisanslar:</p>
+                        <div class="licences small"></div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1 fw-bold">Oyun Türleri:</p>
+                        <div class="game-types small"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-primary view-details-btn">Detayları Görüntüle</button>
+                        <a href="#" class="btn btn-primary visit-btn" target="_blank">Siteyi Ziyaret Et</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Bootstrap & Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/api-service.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
